@@ -9,20 +9,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-@Qualifier("discountedTicketService")
-public class DiscountedTicketService implements TicketService {
+@Qualifier("saleTicketService")
+public class SaleTicketService implements TicketService {
     private final TicketRepository ticketRepository;
 
     @Autowired
-    public DiscountedTicketService(TicketRepository ticketRepository) {
+    public SaleTicketService(TicketRepository ticketRepository) {
         this.ticketRepository = ticketRepository;
     }
 
     @Override
     public void bookTicket(String movie, double price) {
-        double discountedPrice = price * 0.9;
-        ticketRepository.saveTicket(movie, discountedPrice);
-        System.out.println("Билет с скидкой забронирован: " + movie + " по цене $" + discountedPrice);
+        double SellOutPrice = price * 0.9;
+        ticketRepository.saveTicket(movie,SellOutPrice);
+        System.out.println("Ticket with sell-out is booked: " + movie + "cost - " + SellOutPrice);
     }
 
     @Override
